@@ -1,4 +1,4 @@
-# Documentação para Teste da API Laravel com Insomnia
+# Documentação para Teste da API Laravel com Insomnia ou Postman
 
 Este documento fornece instruções para testar a API do Laravel usando Insomnia, com um banco de dados MySQL.
 
