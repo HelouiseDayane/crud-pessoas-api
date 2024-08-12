@@ -1,66 +1,118 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Documentação para Teste da API Laravel com Insomnia
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este documento fornece instruções para testar a API do Laravel usando Insomnia, com um banco de dados MySQL.
 
-## About Laravel
+## Pré-requisitos
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. **Laravel**: Certifique-se de que o Laravel está instalado e configurado corretamente.
+2. **Banco de Dados MySQL**: Verifique se o banco de dados MySQL está em execução e configurado.
+3. **Insomnia**: Instale o Insomnia para enviar requisições API.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Configuração do Banco de Dados
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. **Arquivo `.env`**: Configure o arquivo `.env` na raiz do seu projeto Laravel para conectar ao seu banco de dados MySQL. Exemplo:
 
-## Learning Laravel
+```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=seu_banco_de_dados
+   DB_USERNAME=seu_usuario
+   DB_PASSWORD=sua_senha
+```
+2. **Rodar Migrações**: Execute as migrações para criar as tabelas necessárias no banco de dados.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```bash
+php artisan migrate
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+O servidor estará acessível em http://localhost:8000.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Testando a API com Insomnia
 
-## Laravel Sponsors
+# 1. Criar uma Nova Requisição
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Abra o Insomnia.
+Crie um novo Request clicando em New Request.
 
-### Premium Partners
+## Configuração da Requisição
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+**Criar Pessoa (POST)**
+Método: POST
 
-## Contributing
+URL: http://localhost:8000/api/pessoas
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Corpo da Requisição:
 
-## Code of Conduct
+Selecione JSON como o tipo de corpo.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Exemplo de JSON para criar uma pessoa:
 
-## Security Vulnerabilities
+```JSON
+{
+    "nome": "João da Silva",
+    "dataNascimento": "1990-05-15",
+    "salario": 3500.00,
+    "observacoes": "Observações adicionais aqui.",
+    "nomeMae": "Maria da Silva",
+    "nomePai": "José da Silva",
+    "cpf": "12345678901"
+}
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+## Enviar a Requisição: Clique no botão Send.
 
-## License
+**Listar Pessoas (GET)**
+Método: GET
+URL: http://localhost:8000/api/pessoas
+Enviar a Requisição: Clique no botão Send.
+Obter Pessoa Específica (GET)
+Método: GET
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+URL: http://localhost:8000/api/pessoas/{id}
+
+Substitua {id} pelo ID da pessoa que você deseja obter. Por exemplo: http://localhost:8000/api/pessoas/1.
+
+**Enviar a Requisição**: Clique no botão Send.
+
+**Atualizar Pessoa (PUT)**
+Método: PUT
+
+URL: http://localhost:8000/api/pessoas/{id}
+
+Substitua {id} pelo ID da pessoa que você deseja atualizar.
+
+**Corpo da Requisição:**
+
+Selecione JSON como o tipo de corpo.
+
+Exemplo de JSON para atualizar uma pessoa:
+
+```JSON
+{
+    "nome": "João da Silva",
+    "dataNascimento": "1990-05-15",
+    "salario": 3600.00,
+    "observacoes": "Observações atualizadas.",
+    "nomeMae": "Maria da Silva",
+    "nomePai": "José da Silva",
+    "cpf": "12345678901"
+}
+```
+Enviar a Requisição: Clique no botão Send.
+
+## Excluir Pessoa (DELETE)
+Método: DELETE
+
+URL: http://localhost:8000/api/pessoas/{id}
+
+Substitua {id} pelo ID da pessoa que você deseja remover.
+
+Enviar a Requisição: Clique no botão Send.
+
+## Testando e Verificando
+Verificar Respostas: Verifique as respostas das requisições para garantir que estão corretas e que a API está funcionando como esperado.
+
+
+
+
