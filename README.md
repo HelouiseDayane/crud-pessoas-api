@@ -1,12 +1,12 @@
 # Documentação para Teste da API Laravel com Insomnia ou Postman
 
-Este documento fornece instruções para testar a API do Laravel usando Insomnia, com um banco de dados MySQL.
+Este documento fornece instruções para testar a API do Laravel usando Insomnia ou Postman, com um banco de dados MySQL.
 
 ## Pré-requisitos
 
 1. **Laravel**: Certifique-se de que o Laravel está instalado e configurado corretamente.
 2. **Banco de Dados MySQL**: Verifique se o banco de dados MySQL está em execução e configurado.
-3. **Insomnia**: Instale o Insomnia para enviar requisições API.
+3. **Insomnia ou Postman**: Instale o Insomnia ou Postman para enviar requisições API.
 
 ## Configuração do Banco de Dados
 
