@@ -60,9 +60,9 @@ Exemplo de JSON para criar uma pessoa:
 }
 
 ```
-## Enviar a Requisição: Clique no botão Send.
+ Enviar a Requisição: Clique no botão Send.
 
-**Listar Pessoas (GET)**
+## Listar Pessoas (GET)
 Método: GET
 URL: http://localhost:8000/api/pessoas
 Enviar a Requisição: Clique no botão Send.
